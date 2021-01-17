@@ -1,30 +1,44 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class OrderedList {
+public class OrderList {
     private ArrayList<Beverage> orderedBeverages;
 
-    //add beverage into orderedBeverages List
+    /**
+     * @description add beverage into orderedBeverages List
+     */
     public void addBeverage(Beverage beverage){
         orderedBeverages.add(beverage);
     };
 
-    //remove beverage from orderedBeverages List
+
+    /**
+     * @description remove beverage from orderedBeverages List
+     */
     public void removeBeverage(Beverage beverage){
         orderedBeverages.remove(beverage);
     }
 
-    //get orderedBeverages List
-    public ArrayList<Beverage> getOrderedList(){
+
+    /**
+     * @description get orderedBeverages List
+     */
+    public ArrayList<Beverage> getOrderList(){
         return orderedBeverages;
     }
 
-    //empty the orderedBeverages List
+
+    /**
+     * @description empty the orderedBeverages List
+     */
     public void empty(){
         orderedBeverages.clear();
     }
 
-    //Sum up and return the price of beverages in the orderedBeverages List
+
+    /**
+     * @description Sum up and return the price of beverages in the orderedBeverages List
+     */
     public double getPrice(){
         double totalPrice = 0.00D;
         Iterator beverageIterator = orderedBeverages.iterator();
@@ -33,7 +47,6 @@ public class OrderedList {
             Beverage beverage = (Beverage) beverageIterator.next();
             totalPrice += beverage.getPrice();
         }
-
         return totalPrice;
     }
 }
