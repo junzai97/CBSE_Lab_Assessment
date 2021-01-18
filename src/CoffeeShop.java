@@ -1,21 +1,62 @@
+import Products.Beverage;
+import Products.Beverages.*;
+import Products.Condiments.Milk;
+import Products.Condiments.Mocha;
+import Products.Condiments.Soy;
+import Products.Condiments.Whip;
+
+import java.util.List;
+
+
 public class CoffeeShop {
-    private OrderList orderList;
-    private CoffeeMaker coffeeMaker;
-    private Menu menu;
+    private OrderList orderList = new OrderList();
+    private CoffeeMaker coffeeMaker = new CoffeeMaker();
+    private Menu menu = new Menu();
     private UI ui;
 
-    public CoffeeShop(OrderList orderList, CoffeeMaker coffeeMaker, Menu menu, UI ui) {
-        this.orderList = orderList;
-        this.coffeeMaker = coffeeMaker;
-        this.menu = menu;
+    public CoffeeShop(UI ui) {
         this.ui = ui;
+        this.init();
     }
 
     /**
      * @Description: Set up coffee and condiments into the Menu
      */
     public void init() {
+        menu.addCoffee(coffeeMaker.getBlackCoffee());
+        menu.addCoffee(coffeeMaker.getDecaf());
+        menu.addCoffee(coffeeMaker.getEspresso());
+        menu.addCoffee(coffeeMaker.getHouseBlend());
+        menu.addCondiments(coffeeMaker.addMilk(new NoBeverage()));
+        menu.addCondiments(coffeeMaker.addMocha(new NoBeverage()));
+        menu.addCondiments(coffeeMaker.addSoy(new NoBeverage()));
+        menu.addCondiments(coffeeMaker.addWhip(new NoBeverage()));
+    }
 
+
+    /**
+     * @Description: Get coffee menu
+     * @Dependencies: menu
+     */
+    public List<Beverage> getCoffeeMenu(){
+        return menu.getCoffeeMenu();
+    }
+
+    /**
+     * @Description: Get condiments menu
+     * @Dependencies: menu
+     */
+    public List<Beverage> getCondimentsMenu(){
+        return menu.getCondimentsMenu();
+    }
+
+
+    /**
+     * @Description: Get coffee from OrderList
+     * Dependencies: orderList
+     */
+    public List<Beverage> getOrderedBeverages(){
+        return orderList.getOrderList();
     }
 
     /**
@@ -55,19 +96,24 @@ public class CoffeeShop {
     }
 
     /**
-     * @Description: Select a coffee to brew
-     * Dependencies: CoffeeMaker
-     */
-    public void selectCoffee(){
-
-    }
-
-    /**
      * @Description: Add condiment to the selected coffee
      * Dependencies: CoffeeMaker
      */
-    public void addCondiment(){
-
+    public Beverage addCondiment(int condimentNumber, Beverage coffee){
+        switch (condimentNumber){
+            case 1:
+                coffee = coffeeMaker.addMilk(coffee);
+                break;
+            case 2:
+                coffee = coffeeMaker.addMocha(coffee);
+                break;
+            case 3:
+                coffee = coffeeMaker.addSoy(coffee);
+                break;
+            default:
+                coffee = coffeeMaker.addWhip(coffee);
+        }
+        return coffee;
     }
 
 

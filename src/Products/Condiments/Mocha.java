@@ -15,7 +15,7 @@ public class Mocha extends BeverageCondiment {
 
     @Override
     public String getDescription() {
-        return beverage.getDescription() + ", Soy";
+        return "Mocha " + beverage.getDescription() ;
     }
 
     @Override

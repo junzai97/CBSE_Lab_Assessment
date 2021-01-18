@@ -1,8 +1,10 @@
+import Products.Beverage;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class OrderList {
-    private ArrayList<Beverage> orderedBeverages;
+    private ArrayList<Beverage> orderedBeverages = new ArrayList<>();
 
     /**
      * @description add beverage into orderedBeverages List

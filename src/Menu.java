@@ -1,8 +1,10 @@
+import Products.Beverage;
+
 import java.util.ArrayList;
 
 public class Menu {
-    private ArrayList<Beverage> coffeeMenu;
-    private ArrayList<Beverage> condimentsMenu;
+    private ArrayList<Beverage> coffeeMenu = new ArrayList<>();
+    private ArrayList<Beverage> condimentsMenu = new ArrayList<>();
 
     //Add coffee into coffees ArrayList
     public void addCoffee(Beverage coffee){
@@ -13,7 +15,6 @@ public class Menu {
     public ArrayList<Beverage> getCoffeeMenu(){
         return coffeeMenu;
     };
-
 
     //Add condiment into condiments ArrayList
     public void addCondiments(Beverage condiment){

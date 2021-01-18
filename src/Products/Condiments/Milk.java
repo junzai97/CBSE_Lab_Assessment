@@ -12,10 +12,9 @@ public class Milk extends BeverageCondiment {
         this.cost = 0.5;
     }
 
-
     @Override
     public String getDescription() {
-        return beverage.getDescription() + ", Milk" ;
+        return  "Milk " + beverage.getDescription()  ;
     }
 
     @Override
