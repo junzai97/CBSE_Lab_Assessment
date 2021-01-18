@@ -189,7 +189,7 @@ public class UI {
         System.out.println("1. View Menu");
         System.out.println("2. Order coffee");
         System.out.println("3. View or remove coffee from order list");
-        System.out.println("4. Check Out");
+        System.out.println("4. Pay bill");
         System.out.println("5. Exit");
         System.out.println("\nChoose an option:");
         return scanner.nextInt();
