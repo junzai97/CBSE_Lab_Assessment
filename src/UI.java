@@ -118,11 +118,11 @@ public class UI {
         }
         return coffee;
     }
-//
-//    public void purchaseSuccess(Beverage coffee) {
-//        System.out.println("SUCCESS - " + " quantities of " + coffee.getDescription() + " added to oder list!");
-//        this.displayOrderList();
-//    }
+
+    public void purchaseSuccess(Beverage coffee) {
+        System.out.println("SUCCESS - " + " quantities of " + coffee.getDescription() + " added to oder list!");
+        this.displayOrderList();
+    }
 
     public Beverage[] displayOrderList() {
         List<Beverage> shoppedBeverages = this.coffeeShop.getOrderedBeverages();
@@ -168,10 +168,10 @@ public class UI {
         }
     }
 
-//    public void removalSuccess(Beverage beverage) {
-//        System.out.println("SUCCESS - " + beverage.getDescription() + " removed from order list!");
-//        displayOrderList();
-//    }
+    public void removalSuccess(Beverage beverage) {
+        System.out.println("SUCCESS - " + beverage.getDescription() + " removed from order list!");
+        displayOrderList();
+    }
 
     public void displayCheckOut() {
         double totalPrice = this.coffeeShop.getOrderedBeveragesTotalPrice();
