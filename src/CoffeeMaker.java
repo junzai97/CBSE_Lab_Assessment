@@ -1,5 +1,4 @@
-package Products;
-
+import Products.Beverage;
 import Products.Beverages.BlackCoffee;
 import Products.Beverages.Decaf;
 import Products.Beverages.Espresso;

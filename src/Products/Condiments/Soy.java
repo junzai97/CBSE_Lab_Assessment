@@ -3,19 +3,19 @@ package Products.Condiments;
 import Products.Beverage;
 import Products.BeverageCondiment;
 
-public class Whip extends BeverageCondiment {
+public class Soy extends BeverageCondiment {
+
     Beverage beverage;
     private Double cost;
 
-    public Whip(Beverage beverage) {
+    public Soy(Beverage beverage) {
         this.beverage = beverage;
-        this.cost = 0.8;
+        this.cost = 0.4;
     }
-
 
     @Override
     public String getDescription() {
-        return "Whip " + beverage.getDescription() ;
+        return "Soy " + beverage.getDescription() ;
     }
 
     @Override
