@@ -1,9 +1,5 @@
 import Products.Beverage;
 import Products.Beverages.*;
-import Products.Condiments.Milk;
-import Products.Condiments.Mocha;
-import Products.Condiments.Soy;
-import Products.Condiments.Whip;
 
 import java.util.List;
 
