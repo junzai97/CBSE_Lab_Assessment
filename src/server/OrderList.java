@@ -1,9 +1,14 @@
-import Products.Beverage;
+package server;
 
+import Products.Beverage;
+import server.remote.OrderListRemote;
+
+import javax.ejb.Stateful;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class OrderList {
+@Stateful
+public class OrderList implements OrderListRemote {
     private ArrayList<Beverage> orderedBeverages = new ArrayList<>();
 
     /**

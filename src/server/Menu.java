@@ -1,8 +1,13 @@
-import Products.Beverage;
+package server;
 
+import Products.Beverage;
+import server.remote.MenuRemote;
+
+import javax.ejb.Stateful;
 import java.util.ArrayList;
 
-public class Menu {
+@Stateful
+public class Menu implements MenuRemote {
     private ArrayList<Beverage> coffeeMenu = new ArrayList<>();
     private ArrayList<Beverage> condimentsMenu = new ArrayList<>();
 

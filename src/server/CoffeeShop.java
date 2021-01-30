@@ -1,17 +1,26 @@
+package server;
+
 import Products.Beverage;
 import Products.Beverages.*;
-import Products.Condiments.Milk;
-import Products.Condiments.Mocha;
-import Products.Condiments.Soy;
-import Products.Condiments.Whip;
+import client.UI;
+import server.remote.CoffeeShopRemote;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateful;
 import java.util.List;
 
+@Stateful
+public class CoffeeShop implements CoffeeShopRemote {
 
-public class CoffeeShop {
-    private OrderList orderList = new OrderList();
-    private CoffeeMaker coffeeMaker = new CoffeeMaker();
-    private Menu menu = new Menu();
+    @EJB
+    private OrderList orderList;
+
+    @EJB
+    private CoffeeMaker coffeeMaker;
+
+    @EJB
+    private Menu menu;
+
     private UI ui;
 
     public CoffeeShop(UI ui) {
@@ -20,7 +29,7 @@ public class CoffeeShop {
     }
 
     /**
-     * @Description: Set up coffee and condiments into the Menu
+     * @Description: Set up coffee and condiments into the server.Menu
      */
     public void init() {
         menu.addCoffee(coffeeMaker.getBlackCoffee());
@@ -52,7 +61,7 @@ public class CoffeeShop {
 
 
     /**
-     * @Description: Get coffee from OrderList
+     * @Description: Get coffee from server.OrderList
      * Dependencies: orderList
      */
     public List<Beverage> getOrderedBeverages(){
@@ -60,7 +69,7 @@ public class CoffeeShop {
     }
 
     /**
-     * @Description: Add coffee into OrderList
+     * @Description: Add coffee into server.OrderList
      * @Dependencies: orderList
      */
     public void addBeverageIntoOrderList(Beverage beverage){
@@ -70,7 +79,7 @@ public class CoffeeShop {
     }
 
     /**
-     * @Description: Remove coffee from OrderList
+     * @Description: Remove coffee from server.OrderList
      * Dependencies: orderList
      */
     public void removeBeverageFromOrderList(Beverage beverage){
@@ -88,7 +97,7 @@ public class CoffeeShop {
     }
 
     /**
-     * @Description: CheckOut the OrderList
+     * @Description: CheckOut the server.OrderList
      * Dependencies: orderList
      */
     public void checkOut(){
@@ -97,7 +106,7 @@ public class CoffeeShop {
 
     /**
      * @Description: Add condiment to the selected coffee
-     * Dependencies: CoffeeMaker
+     * Dependencies: server.CoffeeMaker
      */
     public Beverage addCondiment(int condimentNumber, Beverage coffee){
         switch (condimentNumber){

@@ -1,3 +1,5 @@
+package server;
+
 import Products.Beverage;
 import Products.Beverages.BlackCoffee;
 import Products.Beverages.Decaf;
@@ -7,8 +9,12 @@ import Products.Condiments.Milk;
 import Products.Condiments.Mocha;
 import Products.Condiments.Soy;
 import Products.Condiments.Whip;
+import server.remote.CoffeeMakerRemote;
 
-public class CoffeeMaker {
+import javax.ejb.Stateless;
+
+@Stateless
+public class CoffeeMaker implements CoffeeMakerRemote {
 
     public Beverage getBlackCoffee() {
         return new BlackCoffee();
