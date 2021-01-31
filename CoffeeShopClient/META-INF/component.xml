@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="virtualCoffeeShop.coffeeShop.osgi.client">
+   <implementation class="virtualCoffeeShop.coffeeShop.osgi.client.UI"/>
+   <reference bind="gotService" cardinality="1..1" interface="virtualCoffeeShop.OralList.osgi.ifce.IOrderList" name="IOrderList" policy="dynamic" unbind="lostService"/>
+   <reference bind="gotService" cardinality="1..1" interface="virtualCoffeeShop.coffeeMaker.osgi.ifce.CoffeeMakerApi." name="CoffeeMakerApi" policy="dynamic" unbind="lostService"/>
+</scr:component>

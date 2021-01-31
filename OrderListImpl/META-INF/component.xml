@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="virtualCoffeeShop.OralList.osgi.impl">
+   <implementation class="virtualCoffeeShop.OralList.osgi.impl.OrderListImpl"/>
+   <service>
+      <provide interface="virtualCoffeeShop.OralList.osgi.ifce.IOrderList"/>
+   </service>
+</scr:component>
