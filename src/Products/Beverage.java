@@ -1,6 +1,6 @@
 package Products;
 
-public abstract class Beverage {
+public class Beverage {
 
     protected String description;
     protected Double price;
@@ -9,5 +9,7 @@ public abstract class Beverage {
         return description;
     }
 
-    public abstract Double getPrice();
+    public Double getPrice() {
+        return price;
+    };
 }

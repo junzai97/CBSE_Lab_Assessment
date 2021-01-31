@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="beverageCondiment" class="Products.BeverageCondiment" parent="beverage"></bean>
+    <bean id="beverage" class="Products.Beverage"></bean>
+
+    <bean id="blackCoffee" class="Products.Beverages.BlackCoffee" parent="beverage">
+    </bean>
+    <bean id="decaf" class="Products.Beverages.Decaf" parent="beverage">
+    </bean>
+    <bean id="espresso" class="Products.Beverages.Espresso" parent="beverage">
+    </bean>
+    <bean id="houseBlend" class="Products.Beverages.HouseBlend" parent="beverage">
+    </bean>
+    <bean id="noBeverage" class="Products.Beverages.NoBeverage" parent="beverage">
+    </bean>
+
+    <bean id="milk" class="Products.Condiments.Milk" parent="beverageCondiment">
+        <constructor-arg index="0" ref="beverage"/>
+    </bean>
+    <bean id="mocha" class="Products.Condiments.Mocha" parent="beverageCondiment">
+        <constructor-arg index="0" ref="beverage"/>
+    </bean>
+    <bean id="soy" class="Products.Condiments.Soy" parent="beverageCondiment">
+        <constructor-arg index="0" ref="beverage"/>
+    </bean>
+    <bean id="whip" class="Products.Condiments.Whip" parent="beverageCondiment">
+        <constructor-arg index="0" ref="beverage"/>
+    </bean>
+
+    <bean id="uI" class="UI">
+        <property name="coffeeShop" ref="coffeeShop"/>
+    </bean>
+
+    <bean id="coffeeMaker" class="CoffeeMaker">
+    </bean>
+
+    <bean id="coffeeShop" class="CoffeeShop">
+        <constructor-arg index="0" ref="uI"/>
+    </bean>
+
+    <bean id="menu" class="Menu">
+    </bean>
+
+    <bean id="orderList" class="OrderList">
+    </bean>
+
+</beans>
