@@ -101,20 +101,8 @@ public class CoffeeShopClient {
      * Dependencies: CoffeeMaker
      */
     public Beverage addCondiment(int condimentNumber, Beverage coffee){
-        switch (condimentNumber){
-            case 1:
-                coffee = coffeeMaker.addMilk(coffee);
-                break;
-            case 2:
-                coffee = coffeeMaker.addMocha(coffee);
-                break;
-            case 3:
-                coffee = coffeeMaker.addSoy(coffee);
-                break;
-            default:
-                coffee = coffeeMaker.addWhip(coffee);
-        }
-        return coffee;
+        return coffeeMaker.addCondiment(condimentNumber, coffee);
+
     }
 
 

@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class CoffeeMakerImpl implements CoffeeMakerApi{
+
+    @Override
     public Beverage getBeverage(String beverageName) {
         if (beverageName.equals("Black Coffee")){
             return new BlackCoffee();
@@ -29,23 +31,24 @@ public class CoffeeMakerImpl implements CoffeeMakerApi{
         return null;
     }
 
-
-    public Beverage addCondiment(String condimentName, Beverage beverage) {
-        if (condimentName.equals("Milk")){
+    @Override
+    public Beverage addCondiment(int condimentNumber, Beverage beverage) {
+        if (condimentNumber == 1){
             return new Milk(beverage);
         }
-        if (condimentName.equals("Whip")){
+        if (condimentNumber == 2){
             return new Whip(beverage);
         }
-        if (condimentName.equals("Soy")){
+        if (condimentNumber == 3 ){
             return new Soy(beverage);
         }
-        if (condimentName.equals("Mocha")){
+        if (condimentNumber == 4){
             return new Mocha(beverage);
         }
         return beverage;
     }
 
+    @Override
     public ArrayList<Beverage> getAllAvailableBeverage() {
         return new ArrayList<>(Arrays.asList(
                 new BlackCoffee(),
@@ -55,6 +58,7 @@ public class CoffeeMakerImpl implements CoffeeMakerApi{
         ));
     }
 
+    @Override
     public ArrayList<Beverage> getAllAvailableCondiments() {
         return new ArrayList<>(Arrays.asList(
                 new Milk(new NoBeverage()),
@@ -62,25 +66,5 @@ public class CoffeeMakerImpl implements CoffeeMakerApi{
                 new Soy(new NoBeverage()),
                 new Mocha(new NoBeverage())
         ));
-    }
-
-    @Override
-    public Beverage addSoy(Beverage coffee) {
-        return new Soy(coffee);
-    }
-
-    @Override
-    public Beverage addMocha(Beverage coffee) {
-        return new Mocha(coffee);
-    }
-
-    @Override
-    public Beverage addMilk(Beverage coffee) {
-        return new Milk(coffee);
-    }
-
-    @Override
-    public Beverage addWhip(Beverage coffee) {
-        return new Whip(coffee);
     }
 }
