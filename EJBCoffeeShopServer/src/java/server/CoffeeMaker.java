@@ -9,9 +9,8 @@ import Products.Condiments.Milk;
 import Products.Condiments.Mocha;
 import Products.Condiments.Soy;
 import Products.Condiments.Whip;
-import server.remote.CoffeeMakerRemote;
 
-public class CoffeeMaker implements CoffeeMakerRemote {
+public class CoffeeMaker {
 
     public Beverage getBlackCoffee() {
         return new BlackCoffee();

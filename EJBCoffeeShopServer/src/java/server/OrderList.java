@@ -1,12 +1,11 @@
 package server;
 
 import Products.Beverage;
-import server.remote.OrderListRemote;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class OrderList implements OrderListRemote {
+public class OrderList {
     private ArrayList<Beverage> orderedBeverages = new ArrayList<>();
 
     /**

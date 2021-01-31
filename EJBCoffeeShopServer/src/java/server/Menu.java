@@ -1,11 +1,10 @@
 package server;
 
 import Products.Beverage;
-import server.remote.MenuRemote;
 
 import java.util.ArrayList;
 
-public class Menu implements MenuRemote {
+public class Menu {
     private ArrayList<Beverage> coffeeMenu = new ArrayList<>();
     private ArrayList<Beverage> condimentsMenu = new ArrayList<>();
 
