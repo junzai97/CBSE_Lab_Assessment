@@ -1,5 +1,6 @@
 import Products.Beverage;
-
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -31,8 +32,8 @@ public class UI {
         int coffeeIndex = 0;
         Iterator iterator = coffees.iterator();
 
-        while(iterator.hasNext()) {
-            Beverage coffee = (Beverage)iterator.next();
+        while (iterator.hasNext()) {
+            Beverage coffee = (Beverage) iterator.next();
             ++coffeeIndex;
             System.out.printf("%1$d.\t\t%2$s\t\t$%3$,.2f\n", coffeeIndex, coffee.getDescription(), coffee.getPrice());
         }
@@ -49,14 +50,13 @@ public class UI {
         int condimentIndex = 0;
         Iterator iterator = condiments.iterator();
 
-        while(iterator.hasNext()) {
-            Beverage condiment = (Beverage)iterator.next();
+        while (iterator.hasNext()) {
+            Beverage condiment = (Beverage) iterator.next();
             ++condimentIndex;
-            System.out.printf("%1$d.\t\t%2$s\t\t$%3$,.2f\n", condimentIndex, condiment.getDescription(), condiment.getPrice());
+            System.out.printf("%1$d.\t\t%2$s\t\t$%3$,.2f\n", condimentIndex, condiment.getDescription(),
+                    condiment.getPrice());
         }
     }
-
-
 
     public Beverage selectCoffeeToBuy() {
         List<Beverage> coffees = this.coffeeShop.getCoffeeMenu();
@@ -69,8 +69,8 @@ public class UI {
         int coffeeIndex = 0;
         Iterator iterator = coffees.iterator();
 
-        while(iterator.hasNext()) {
-            Beverage coffee = (Beverage)iterator.next();
+        while (iterator.hasNext()) {
+            Beverage coffee = (Beverage) iterator.next();
             ++coffeeIndex;
             System.out.printf("%1$d.\t\t%2$s\t\t$%3$,.2f\n", coffeeIndex, coffee.getDescription(), coffee.getPrice());
         }
@@ -78,15 +78,15 @@ public class UI {
         System.out.println("\nPlease select item no. to buy:");
         int selectedIndex = scanner.nextInt();
         if (selectedIndex > 0 && selectedIndex <= coffees.size()) {
-            Beverage selectedBeverage = (Beverage)coffees.get(selectedIndex - 1);
-            return  selectCondimentsToAdd(selectedBeverage);
+            Beverage selectedBeverage = (Beverage) coffees.get(selectedIndex - 1);
+            return selectCondimentsToAdd(selectedBeverage);
         } else {
             System.out.println("ERROR - Invalid product selection");
             return null;
         }
     }
 
-    public Beverage selectCondimentsToAdd(Beverage coffee){
+    public Beverage selectCondimentsToAdd(Beverage coffee) {
         List<Beverage> condiments = this.coffeeShop.getCondimentsMenu();
         System.out.println("\n------------------");
         System.out.println(" AVAILABLE CONDIMENTS");
@@ -97,20 +97,21 @@ public class UI {
         int condimentIndex = 0;
         Iterator iterator = condiments.iterator();
         Boolean running = true;
-        while(iterator.hasNext()) {
-            Beverage condiment = (Beverage)iterator.next();
+        while (iterator.hasNext()) {
+            Beverage condiment = (Beverage) iterator.next();
             ++condimentIndex;
-            System.out.printf("%1$d.\t\t%2$s\t\t$%3$,.2f\n", condimentIndex, condiment.getDescription(), condiment.getPrice());
+            System.out.printf("%1$d.\t\t%2$s\t\t$%3$,.2f\n", condimentIndex, condiment.getDescription(),
+                    condiment.getPrice());
         }
 
-        while(running){
+        while (running) {
             System.out.println("\nPlease select condiment no. to add (Press 0 to confirm):");
             int selectedIndex = scanner.nextInt();
             if (selectedIndex > 0 && selectedIndex <= condiments.size()) {
                 coffee = coffeeShop.addCondiment(selectedIndex, coffee);
                 System.out.println("Added on: " + condiments.get(selectedIndex - 1).getDescription());
                 System.out.println("Current beverage: " + coffee.getDescription());
-            } else if(selectedIndex == 0) {
+            } else if (selectedIndex == 0) {
                 running = false;
             } else {
                 System.out.println("ERROR - Invalid product selection");
@@ -137,12 +138,13 @@ public class UI {
         Beverage[] beverages = new Beverage[shoppedBeverages.size()];
         Iterator iterator = shoppedBeverages.iterator();
 
-        while(iterator.hasNext()) {
-            Beverage beverage = (Beverage)iterator.next();
+        while (iterator.hasNext()) {
+            Beverage beverage = (Beverage) iterator.next();
             beverages[itemIndex] = beverage;
             ++itemIndex;
             totalPrice += beverage.getPrice();
-            System.out.printf("%1$2d%2$-5s%3$-25s$%4$,-17.2f\n", itemIndex, ".", beverage.getDescription(), beverage.getPrice());
+            System.out.printf("%1$2d%2$-5s%3$-25s$%4$,-17.2f\n", itemIndex, ".", beverage.getDescription(),
+                    beverage.getPrice());
         }
 
         System.out.println("                                                -----------------------------");
@@ -156,10 +158,10 @@ public class UI {
         System.out.println("\nPlease select item no. to remove (Press 0 to cancel):");
         int selectedIndex = scanner.nextInt();
 
-        if(selectedIndex == 0){
+        if (selectedIndex == 0) {
             System.out.println("Back to Menu\n");
             return null;
-        }else if (selectedIndex > 0 && selectedIndex <= products.length) {
+        } else if (selectedIndex > 0 && selectedIndex <= products.length) {
             Beverage beverage = products[selectedIndex - 1];
             return beverage;
         } else {
@@ -179,9 +181,6 @@ public class UI {
         System.out.println("Thank you for your patronage! Please visit again!");
     }
 
-
-
-
     public int mainMenu() {
         System.out.println("\n----------------------------");
         System.out.println("WELCOME TO CBSE Coffee Shop!");
@@ -196,12 +195,12 @@ public class UI {
     }
 
     public static void main(String[] args) {
-        UI ui = new UI();
-        CoffeeShop coffeeShop = new CoffeeShop(ui);
-        ui.setCoffeeShop(coffeeShop);
+        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+        CoffeeShop coffeeShop = (CoffeeShop) context.getBean("coffeeShop");
+        UI ui = (UI) context.getBean("uI");
 
-        for(int userChoice = ui.mainMenu(); userChoice > 0 && userChoice <= 4; userChoice = ui.mainMenu()) {
-            switch(userChoice) {
+        for (int userChoice = ui.mainMenu(); userChoice > 0 && userChoice <= 4; userChoice = ui.mainMenu()) {
+            switch (userChoice) {
                 case 1:
                     ui.displayCoffees();
                     ui.displayCondiments();
@@ -214,7 +213,7 @@ public class UI {
                     break;
                 case 3:
                     beverage = ui.selectBeverageToRemove();
-                    if(beverage != null){
+                    if (beverage != null) {
                         coffeeShop.removeBeverageFromOrderList(beverage);
                         ui.displayOrderList();
                     }

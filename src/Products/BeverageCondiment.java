@@ -1,6 +1,8 @@
 package Products;
 
-public abstract class BeverageCondiment extends Beverage {
+public class BeverageCondiment extends Beverage {
 
-    public abstract String getDescription();
+    public String getDescription() {
+        return description;
+    };
 }
