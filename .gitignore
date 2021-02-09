@@ -86,3 +86,6 @@ nb-configuration.xml
 ## OS X
 ##############################
 .DS_Store
+/CoffeeShopServer/nbproject/private/
+/EJBCoffeeShopServer/nbproject/private/
+/EJBCoffeeShopClient/nbproject/private/

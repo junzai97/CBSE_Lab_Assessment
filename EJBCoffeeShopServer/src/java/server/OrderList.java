@@ -1,3 +1,5 @@
+package server;
+
 import Products.Beverage;
 
 import java.util.ArrayList;

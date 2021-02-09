@@ -18,4 +18,5 @@ public class BlackCoffee extends Beverage {
     public Double getPrice() {
         return price;
     }
+
 }

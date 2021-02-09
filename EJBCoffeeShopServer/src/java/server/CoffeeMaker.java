@@ -1,3 +1,5 @@
+package server;
+
 import Products.Beverage;
 import Products.Beverages.BlackCoffee;
 import Products.Beverages.Decaf;
